@@ -1,0 +1,38 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+
+class CreateLanguagesTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('languages', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 100);
+            $table->string('flag', 100)->nullable();
+            $table->string('abbr', 3);
+            $table->string('script', 20)->nullable();
+            $table->string('native', 20)->nullable();
+            $table->unsignedTinyInteger('active')->default('1');
+            $table->unsignedTinyInteger('default')->default('0');
+            $table->timestamps();
+            $table->softDeletes();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('languages');
+    }
+}

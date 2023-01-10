@@ -1,0 +1,20 @@
+{
+    "excludes":
+    [
+        "AlignPHPCode",
+        "WordWrap",
+        "NewLineBeforeReturn"
+    ],
+    "indent_with_space": 4,
+    "passes":
+    [
+        "AlignPHPCode",
+        "TrimSpaceBeforeSemicolon",
+        "DoubleToSingleQuote",
+        "NewLineBeforeReturn",
+        "RestoreComments"
+    ],
+    "psr1": false,
+    "psr2": true,
+    "version": 1
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Gema Digital</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="Content-language" content="en" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="mobile-web-app-capable" content="yes" />
+
+  <meta name="zone" content="PT" />
+  <meta name="image" content="/img/logo.png" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta name="rating" content="General" />
+  <meta name="geo.region" content="Portugal" />
+  <meta name="geo.placename" content="Porto" />
+  <meta name="developer" content="promatik" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- App -->
+  <link rel="manifest" href="manifest.webmanifest" />
+  <each loop="item in [32, 96, 16]">
+    <link rel="icon" type="image/png" sizes="{{ item }}x{{ item }}" href="/ico/favicon-{{ item }}x{{ item }}.png" />
+  </each>
+  <meta name="application-name" content="gema-digital" />
+  <meta name="apple-mobile-web-app-title" content="gema-digital" />
+  <meta name="theme-color" content="#205081" />
+
+  <!-- Apple -->
+  <each loop="item in [76, 120, 152, 180]">
+    <link rel="apple-touch-icon" sizes="{{ item }}x{{ item }}" href="/ico/apple-icon-{{ item }}x{{ item }}.png" />
+  </each>
+
+  <!-- Microsoft -->
+  <meta name="msapplication-TileColor" content="#205081" />
+  <meta name="msapplication-TileImage" content="/img/logo.png" />
+
+  <!-- Facebook -->
+  <meta property="og:title" content="Gema Digital" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/img/logo.png" />
+  <meta property="og:description" content="" />
+  <meta property="og:url" content="" />
+
+  <!-- Preload -->
+  <link rel="preload" href="index.js" as="script" />
+  <link rel="preconnect" href="https://www.google-analytics.com" />
+</head>
+
+<body>
+  <!-- Nav bar -->
+  <nav>
+    <include src="views/nav.html"></include>
+  </nav>
+
+  <!-- Main -->
+  <main>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <include src="views/footer.html"></include>
+  </footer>
+
+  <!-- SVGs -->
+  <include src="views/defs.svg"></include>
+
+  <script src="index.js"></script>
+
+  <!-- Google Analytics -->
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-00000000-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <!-- Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('/service-worker.js');
+  </script>
+
+</body>
+
+</html>

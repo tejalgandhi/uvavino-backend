@@ -1,0 +1,17 @@
+// Framework
+@import "../../vendor/gemadigital/framework/src/resources/sass/framework.scss";
+
+// Vars
+$body-bg: #f8fafc;
+$font-family-sans-serif: "Lato", sans-serif;
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Lato");
+
+// Componenets
+@import "../../vendor/gemadigital/framework/src/resources/sass/components/slider.scss";
+
+// Common rules
+@import "common.scss";
+
+// Main Code

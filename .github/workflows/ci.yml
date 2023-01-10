@@ -1,0 +1,41 @@
+name: 'PHPStan'
+
+on: [push]
+
+jobs:
+  phpstan-dev:
+    strategy:
+      matrix:
+        php: ['8.1']
+        laravel: ['^9.0']
+
+    name: 'PHP ${{ matrix.php }} / Laravel ${{ matrix.laravel }}'
+
+    runs-on: 'ubuntu-latest'
+
+    steps:
+      - name: 'Checkout code'
+        uses: 'actions/checkout@v2'
+
+      - name: 'Setup PHP'
+        uses: 'shivammathur/setup-php@v2'
+        with:
+          php-version: '${{ matrix.php }}'
+          extensions: 'zip'
+          tools: 'composer:v2'
+          coverage: 'none'
+
+      - name: 'Setup composer vars'
+        run: 'composer config http-basic.backpackforlaravel.com ${{ secrets.BACKPACK_PRO }}'
+
+      - name: 'Install dependencies from composer.json'
+        run: 'composer install --no-interaction --no-progress'
+
+      - name: 'Generate .env file'
+        run: 'cp .env.example .env'
+
+      - name: 'Generate artisan key'
+        run: 'php artisan key:generate'
+
+      - name: 'PHP Stan Analyse'
+        run: 'composer analyse'

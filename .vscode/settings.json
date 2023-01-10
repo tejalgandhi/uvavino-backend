@@ -1,0 +1,73 @@
+{
+    // Please install the following extensions:
+    // - fterrag.vscode-php-cs-fixer | PHP Formatter or
+    // - kokororin.vscode-phpfmt | PHP Formatter
+    // - sibiraj-s.vscode-scss-formatter | SCSS Formatter
+    // - dbaeumer.vscode-eslint | ESLint
+    // 
+    // Also recommended:
+    // - ryannaddy.laravel-artisan | Laravel Artisan
+    // - amirmarmul.laravel-blade-vscode | Blade highlighter
+    // - felixfbecker.php-intellisense | PHP IntelliSense
+    // - mohsen1.prettify-json | Prettify JSON
+    // 
+    // For PHP Formatter you should copy the following settings to your own vscode settings
+    // uncommenting and adding the correct path to your php bin
+    //
+    // "phpfmt.php_bin": "C:/laragon/bin/php/php-8.0.2-Win32-vs16-x64/php.exe",
+    "phpfmt.passes": [
+        "AlignPHPCode",
+        "TrimSpaceBeforeSemicolon",
+        "DoubleToSingleQuote",
+        "NewLineBeforeReturn",
+        "RestoreComments",
+        "ShortArray",
+        "ReplaceIsNull",
+        "TightConcat",
+        "SpaceAfterExclamationMark",
+        "IndentTernaryConditions",
+    ],
+    "phpfmt.exclude": [
+        "WordWrap",
+        "NewLineBeforeReturn",
+    ],
+    // 
+    // Don't copy after this
+    // 
+    "editor.formatOnSave": true,
+    "editor.fontLigatures": true,
+    // "editor.fontFamily": "Fira Code",
+    "editor.renderWhitespace": "selection",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "files.exclude": {
+        ".expo": true,
+        ".vs": true,
+        "*.code-workspace": true,
+        "*.sublime*": true,
+        ".gitattributes": true,
+        "artisan": true,
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features",
+    },
+    "[php]": {
+        "editor.defaultFormatter": "kokororin.vscode-phpfmt"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "[scss]": {
+        "editor.defaultFormatter": "sibiraj-s.vscode-scss-formatter"
+    },
+    "blade.format.enable": true,
+    "scss.lint.duplicateProperties": "error",
+    "scss.lint.emptyRules": "error",
+    "scss.lint.idSelector": "warning",
+    "scss.lint.important": "warning",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+}
