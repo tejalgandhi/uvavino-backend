@@ -1,8 +1,26 @@
 <li class="nav-item header">{{ __("Crud") }}</li>
 
-<li class="nav-item">
-  <a class="nav-link" href="{{ backpack_url('wine-tags') }}">
-    <i class="nav-icon la la-tag"></i>
-    <span> {{ __('Wine Tags') }} </span>
+<li class="nav-item nav-dropdown">
+  <a class="nav-link nav-dropdown-toggle" href="#">
+    <i class="nav-icon la la-newspaper-o"></i>
+    <span>{{ ucfirst(__("Trade Seller")) }}</span>
   </a>
+  <ul class="nav-dropdown-items">
+    <li class="nav-item">
+      <a class="nav-link" href="{{ backpack_url('wine-tags') }}">
+        <i class="nav-icon la la-circle-o"></i>
+        <span>{{ ucfirst(__("Wine Tags")) }}</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ backpack_url('wine-variety') }}">
+        <i class="nav-icon la la-circle-o"></i>
+        <span>{{ ucfirst(__("Wine Variety")) }}</span>
+      </a>
+    </li>
+  </ul>
 </li>
+
+
+
+

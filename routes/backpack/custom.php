@@ -15,6 +15,7 @@ Route::group([
     Route::crud('category', 'CategoryCrudController');
     Route::crud('tag', 'TagCrudController');
     Route::crud('wine-tags', 'WineTagCrudController');
+    Route::crud('wine-variety', 'WineVarietyCrudController');
 
     Route::get('custom', 'CustomController@index')->name('page.custom.index');
 });
