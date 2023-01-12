@@ -30,6 +30,12 @@
         <span>{{ ucfirst(__("regions")) }}</span>
       </a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ backpack_url('brands') }}">
+        <i class="nav-icon la la-circle-o"></i>
+        <span>{{ ucfirst(__("brands")) }}</span>
+      </a>
+    </li>
 
   </ul>
 </li>
