@@ -17,6 +17,7 @@ Route::group([
     Route::crud('wine-tags', 'WineTagCrudController');
     Route::crud('wine-variety', 'WineVarietyCrudController');
     Route::crud('drink-type', 'DrinkTypeCrudController');
+    Route::crud('regions', 'RegionsCrudController');
 
 
     Route::crud('countries', 'CountryCrudController');

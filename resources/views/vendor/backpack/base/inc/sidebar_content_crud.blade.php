@@ -24,6 +24,12 @@
         <span>{{ ucfirst(__("Drink Types")) }}</span>
       </a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ backpack_url('regions') }}">
+        <i class="nav-icon la la-circle-o"></i>
+        <span>{{ ucfirst(__("regions")) }}</span>
+      </a>
+    </li>
 
   </ul>
 </li>
