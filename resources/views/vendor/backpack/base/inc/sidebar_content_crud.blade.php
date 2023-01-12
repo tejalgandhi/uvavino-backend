@@ -28,6 +28,12 @@
   </ul>
 </li>
 
+<li class="nav-item">
+  <a class="nav-link" href="{{ backpack_url('countries') }}">
+    <i class="la la-globe nav-icon"></i>
+    <span>{{ ucfirst(__("Country")) }}</span>
+  </a>
+</li>
 
 
 
