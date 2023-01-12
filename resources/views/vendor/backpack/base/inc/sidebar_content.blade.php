@@ -48,5 +48,8 @@
     </a>
 </li>
 
+{{-- Custom crud --}}
+@include('vendor.backpack.base.inc.sidebar_content_crud')
+
 {{-- Admin --}}
 @include('gemadigital::vendor.backpack.base.inc.sidebar_content_admin')
