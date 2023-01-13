@@ -36,6 +36,12 @@
         <span>{{ ucfirst(__("brands")) }}</span>
       </a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ backpack_url('producers') }}">
+        <i class="nav-icon la la-circle-o"></i>
+        <span>{{ ucfirst(__("producers")) }}</span>
+      </a>
+    </li>
 
   </ul>
 </li>
