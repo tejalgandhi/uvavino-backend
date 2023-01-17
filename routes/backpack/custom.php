@@ -14,6 +14,14 @@ Route::group([
     Route::crud('article', 'ArticleCrudController');
     Route::crud('category', 'CategoryCrudController');
     Route::crud('tag', 'TagCrudController');
+    Route::crud('wine-tags', 'WineTagCrudController');
+    Route::crud('wine-variety', 'WineVarietyCrudController');
+    Route::crud('drink-type', 'DrinkTypeCrudController');
+    Route::crud('regions', 'RegionsCrudController');
+    Route::crud('brands', 'BrandsCrudController');
+    Route::crud('producers', 'ProducersCrudController');
 
+
+    Route::crud('countries', 'CountryCrudController');
     Route::get('custom', 'CustomController@index')->name('page.custom.index');
 });
