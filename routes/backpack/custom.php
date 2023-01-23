@@ -25,4 +25,5 @@ Route::group([
     Route::crud('countries', 'CountryCrudController');
     Route::get('custom', 'CustomController@index')->name('page.custom.index');
     Route::crud('product', 'ProductCrudController');
+    Route::crud('packaging', 'PackagingCrudController');
 });

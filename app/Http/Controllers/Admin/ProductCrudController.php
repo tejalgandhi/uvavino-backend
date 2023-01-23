@@ -40,7 +40,7 @@ class ProductCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::addField([  // Select
+        CRUD::addColumn([  // Select
             'label'     => "User",
             'type'      => 'select',
             'name'      => 'wine_user_id', // the db column for the foreign key
@@ -59,7 +59,7 @@ class ProductCrudController extends CrudController
                 return $query->orderBy('username', 'ASC')->get();
             }), //  you can use this to filter the results show in the select
         ]);
-        CRUD::addField([  // Select
+        CRUD::addColumn([  // Select
             'label'     => "Country",
             'type'      => 'select',
             'name'      => 'country_id', // the db column for the foreign key

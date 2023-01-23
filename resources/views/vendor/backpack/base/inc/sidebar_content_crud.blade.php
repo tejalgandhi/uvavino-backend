@@ -49,6 +49,8 @@
   </ul>
 </li>
 
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('packaging') }}"><i class="nav-icon la la-th-list"></i> Packagings</a></li>
+
 <li class="nav-item">
   <a class="nav-link" href="{{ backpack_url('countries') }}">
     <i class="la la-globe nav-icon"></i>
