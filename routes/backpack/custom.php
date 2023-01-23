@@ -17,11 +17,12 @@ Route::group([
     Route::crud('wine-tags', 'WineTagCrudController');
     Route::crud('wine-variety', 'WineVarietyCrudController');
     Route::crud('drink-type', 'DrinkTypeCrudController');
-    Route::crud('regions', 'RegionsCrudController');
+    Route::crud('region', 'RegionCrudController');
     Route::crud('brands', 'BrandsCrudController');
-    Route::crud('producers', 'ProducersCrudController');
+    Route::crud('producers', 'ProducerCrudController');
 
 
     Route::crud('countries', 'CountryCrudController');
     Route::get('custom', 'CustomController@index')->name('page.custom.index');
+    Route::crud('product', 'ProductCrudController');
 });

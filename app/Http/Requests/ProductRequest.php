@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegionsRequest extends FormRequest
+class ProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,8 +26,7 @@ class RegionsRequest extends FormRequest
     {
         return [
             'country_id' => 'required',
-            'name' => 'required|min:5|max:255',
-            'slug' => 'required|alpha_dash|min:5|max:255',
+            'wine_name' => 'required|min:5|max:255',
         ];
     }
 
