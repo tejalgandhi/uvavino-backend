@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class WineType extends Model
 {
     use HasFactory;
+
+    protected $casts = [
+        'status' => WineTypeStatus::class,
+        'is_approved' => WineTypeApproveStatus::class
+    ];
+
 }

@@ -25,10 +25,10 @@ class ProducerRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required',
+            'wine_user_id' => 'required',
             'country_id' => 'required',
             'name' => 'required|min:5|max:255',
-            'slug' => 'required|alpha_bash|min:5|max:255'
+            'slug' => 'required|min:5|max:255'
         ];
     }
 

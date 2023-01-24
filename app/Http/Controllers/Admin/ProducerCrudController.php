@@ -103,7 +103,7 @@ class ProducerCrudController extends CrudController
         CRUD::addField([  // Select
             'label'     => "User",
             'type'      => 'select',
-            'name'      => 'user_id', // the db column for the foreign key
+            'name'      => 'wine_user_id', // the db column for the foreign key
 
             // optional
             // 'entity' should point to the method that defines the relationship in your Model
