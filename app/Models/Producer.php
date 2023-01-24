@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\ProducerStatus;
+use App\Enums\ProducerApproveStatus;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,7 +27,7 @@ class Producer extends Model
 
     protected $casts = [
         'status' => ProducerStatus::class,
-        'is_approved' => WineTypeApproveStatus::class
+        'is_approved' => ProducerApproveStatus::class
     ];
 
     /*
