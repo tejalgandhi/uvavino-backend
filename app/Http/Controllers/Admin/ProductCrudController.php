@@ -41,7 +41,7 @@ class ProductCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::addColumn([  // Select
-            'label'     => "User",
+            'label'     => __("User"),
             'type'      => 'select',
             'name'      => 'wine_user_id', // the db column for the foreign key
 
@@ -60,7 +60,7 @@ class ProductCrudController extends CrudController
             }), //  you can use this to filter the results show in the select
         ]);
         CRUD::addColumn([  // Select
-            'label'     => "Country",
+            'label'     =>__( "Country"),
             'type'      => 'select',
             'name'      => 'country_id', // the db column for the foreign key
 
@@ -98,7 +98,7 @@ class ProductCrudController extends CrudController
     {
         CRUD::setValidation(ProductRequest::class);
         CRUD::addField([  // Select
-            'label'     => "Country",
+            'label'     =>__( "Country"),
             'type'      => 'select',
             'name'      => 'country_id', // the db column for the foreign key
 
@@ -117,7 +117,7 @@ class ProductCrudController extends CrudController
             }), //  you can use this to filter the results show in the select
         ]);
         CRUD::addField([
-            'label'     => "Wine User",
+            'label'     => __("Wine User"),
             'type'      => 'select',
             'name'      => 'wine_user_id',
             'entity'    => 'wine_user',
@@ -130,7 +130,7 @@ class ProductCrudController extends CrudController
         CRUD::field('wine_name');
         CRUD::addField([
             'name' => 'slug',
-            'label' => 'Slug (URL)',
+            'label' => __('Slug (URL)'),
             'type' => 'text',
             'hint' => 'Will be automatically generated from your title, if left empty.',
         ]);
@@ -142,7 +142,7 @@ class ProductCrudController extends CrudController
             'placeholder' => 'Your textarea text here',
         ]);
         CRUD::addField([
-            'label'     => "Drink Type",
+            'label'     => __("Drink Type"),
             'type'      => 'select',
             'name'      => 'drink_type_id',
             'entity'    => 'drink_type',
@@ -161,7 +161,7 @@ class ProductCrudController extends CrudController
 
         ]);
         CRUD::addField([
-            'label'     => "Country",
+            'label'     => __("Country"),
             'type'      => 'select',
             'name'      => 'country_id',
             'entity'    => 'country',
@@ -172,7 +172,7 @@ class ProductCrudController extends CrudController
             }),
         ]);
         CRUD::addField([
-            'label'     => "Region",
+            'label'     => __("Region"),
             'type'      => 'select',
             'name'      => 'region_id',
             'entity'    => 'region',
@@ -183,7 +183,7 @@ class ProductCrudController extends CrudController
             }),
         ]);
         CRUD::addField([
-            'label'     => "Producer",
+            'label'     => __("Producer"),
             'type'      => 'select',
             'name'      => 'producer_id',
             'entity'    => 'producer',
@@ -195,7 +195,7 @@ class ProductCrudController extends CrudController
         ]);
         CRUD::field('wine_maker');
         CRUD::addField([
-            'label'     => "Wine Type",
+            'label'     => __("Wine Type"),
             'type'      => 'select',
             'name'      => 'type_of_wine',
             'entity'    => 'wine_type',
@@ -208,7 +208,7 @@ class ProductCrudController extends CrudController
         CRUD::field('year');
         CRUD::field('grape_varieties');
         CRUD::addField([
-            'label'     => "Wine Tag",
+            'label'     => __("Wine Tag"),
             'type'      => 'select',
             'name'      => 'wine_tag_id',
             'entity'    => 'wine_tag',
