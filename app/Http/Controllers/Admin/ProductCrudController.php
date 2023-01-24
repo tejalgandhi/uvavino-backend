@@ -161,17 +161,6 @@ class ProductCrudController extends CrudController
 
         ]);
         CRUD::addField([
-            'label'     => __("Country"),
-            'type'      => 'select',
-            'name'      => 'country_id',
-            'entity'    => 'country',
-            'model'     => "App\Models\Country",
-            'attribute' => 'name',
-            'options'   => (function ($query) {
-                return $query->orderBy('name', 'ASC')->get();
-            }),
-        ]);
-        CRUD::addField([
             'label'     => __("Region"),
             'type'      => 'select',
             'name'      => 'region_id',

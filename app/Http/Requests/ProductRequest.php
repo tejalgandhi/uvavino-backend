@@ -26,7 +26,14 @@ class ProductRequest extends FormRequest
     {
         return [
             'country_id' => 'required',
+            'wine_user_id' => 'required',
             'wine_name' => 'required|min:5|max:255',
+            'drink_type_id' => 'required',
+            'bottle_size' => 'required',
+            'region_id' => 'required',
+            'producer_id' => 'required',
+            'type_of_wine' => 'required',
+            'wine_tag_id' => 'required',
         ];
     }
 
