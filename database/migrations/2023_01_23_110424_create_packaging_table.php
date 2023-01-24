@@ -13,17 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('packaging', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('product_id')->constrained();
-            $table->integer('stock')->nullable();
-            $table->integer('price')->nullable();
-            $table->integer('weight')->nullable();
-            $table->integer('dimension')->nullable();
-            $table->integer('quantity')->nullable();
-            $table->string('unit')->nullable();
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('packaging')) {
+            Schema::create('packaging', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('product_id')->constrained();
+                $table->integer('stock')->nullable();
+                $table->integer('price')->nullable();
+                $table->integer('weight')->nullable();
+                $table->integer('dimension')->nullable();
+                $table->integer('quantity')->nullable();
+                $table->string('unit')->nullable();
+                $table->timestamps();
+            });
+        }
     }
 
     /**
