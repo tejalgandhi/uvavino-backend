@@ -7,9 +7,8 @@ return [
         '20ml'
     ],
     'unit'=>[
-        'units',
+        'ml',
         'liters',
-        'kg'
     ]
 
     ];
