@@ -7,7 +7,7 @@ enum WineTypeApproveStatus: int
 {
 
 case Approved =1 ;
-case Not_Approved =0;
+case NotApproved =0;
 
 }
 
