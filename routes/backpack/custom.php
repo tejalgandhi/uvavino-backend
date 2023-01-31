@@ -24,4 +24,5 @@ Route::group([
 
     Route::crud('countries', 'CountryCrudController');
     Route::get('custom', 'CustomController@index')->name('page.custom.index');
+    Route::crud('auction', 'AuctionCrudController');
 });
