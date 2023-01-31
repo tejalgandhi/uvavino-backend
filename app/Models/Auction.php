@@ -15,7 +15,7 @@ class Auction extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'auction';
+    protected $table = 'auctions';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];

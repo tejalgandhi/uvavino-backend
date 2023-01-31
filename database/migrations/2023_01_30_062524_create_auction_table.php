@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('auction')) {
-            Schema::create('auction', function (Blueprint $table) {
+        if (!Schema::hasTable('auctions')) {
+            Schema::create('auctions', function (Blueprint $table) {
                 $table->id();
                 $table->enum('lot_type', ['1', '2'])->comment('1=>single,2=>multi')->default(1);
                 $table->string('title');
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('auction');
+        Schema::dropIfExists('auctions');
     }
 };
