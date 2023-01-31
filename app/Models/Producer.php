@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Enums\ProducerStatus;
+use App\Enums\ProducerApproveStatus;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class Producers extends Model
+class Producer extends Model
 {
     use CrudTrait;
 
@@ -22,6 +24,11 @@ class Producers extends Model
     // protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
+
+    protected $casts = [
+        'status' => ProducerStatus::class,
+        'is_approved' => ProducerApproveStatus::class
+    ];
 
     /*
     |--------------------------------------------------------------------------
