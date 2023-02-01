@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\RegionsRequest;
+use App\Http\Requests\RegionRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class RegionsCrudController
+ * Class RegionCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class RegionsCrudController extends CrudController
+class RegionCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +26,9 @@ class RegionsCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Regions::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/regions');
-        CRUD::setEntityNameStrings('regions', 'regions');
+        CRUD::setModel(\App\Models\Region::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/region');
+        CRUD::setEntityNameStrings(__('region'), __('regions'));
     }
 
     /**
@@ -42,7 +42,7 @@ class RegionsCrudController extends CrudController
         $this->crud->addColumn(
             [
                 // 1-n relationship
-                'label'     => 'Country', // Table column heading
+                'label'     => __('Country'), // Table column heading
                 'type'      => 'select',
                 'name'      => 'country_id', // the column that contains the ID of that connected entity;
                 'entity'    => 'country', // the method that defines the relationship in your Model
@@ -53,7 +53,7 @@ class RegionsCrudController extends CrudController
         CRUD::column('slug');
         CRUD::addColumn([
             'name'  => 'status',
-            'label' => 'Status',
+            'label' => __('Status'),
             'type'  => 'enum',
             'options' => [
                 '0' => 'Inactive',
@@ -86,9 +86,9 @@ class RegionsCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(RegionsRequest::class);
+        CRUD::setValidation(RegionRequest::class);
         CRUD::addField([  // Select
-            'label'     => "Country",
+            'label'     =>__( "Country"),
             'type'      => 'select',
             'name'      => 'country_id', // the db column for the foreign key
 

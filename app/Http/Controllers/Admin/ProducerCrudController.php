@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\ProducersRequest;
+use App\Http\Requests\ProducerRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class ProducersCrudController
+ * Class ProducerCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class ProducersCrudController extends CrudController
+class ProducerCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,7 +26,7 @@ class ProducersCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Producers::class);
+        CRUD::setModel(\App\Models\Producer::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/producers');
         CRUD::setEntityNameStrings('producers', 'producers');
     }
@@ -98,12 +98,12 @@ class ProducersCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(ProducersRequest::class);
+        CRUD::setValidation(ProducerRequest::class);
 
         CRUD::addField([  // Select
             'label'     => "User",
             'type'      => 'select',
-            'name'      => 'user_id', // the db column for the foreign key
+            'name'      => 'wine_user_id', // the db column for the foreign key
 
             // optional
             // 'entity' should point to the method that defines the relationship in your Model
