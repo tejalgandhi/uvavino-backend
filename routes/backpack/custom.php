@@ -26,4 +26,6 @@ Route::group([
     Route::get('custom', 'CustomController@index')->name('page.custom.index');
     Route::crud('product', 'ProductCrudController');
     Route::crud('packaging', 'PackagingCrudController');
+    Route::crud('auction', 'AuctionCrudController');
+    Route::crud('auction-package', 'AuctionPackageCrudController');
 });
