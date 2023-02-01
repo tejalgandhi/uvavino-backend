@@ -28,7 +28,7 @@ class PackagingCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Packaging::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/packaging');
-        CRUD::setEntityNameStrings('packaging', 'packagings');
+        CRUD::setEntityNameStrings(__('packaging'), __('packagings'));
     }
 
     /**
