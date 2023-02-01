@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Enums\AuctionType;
+use App\Enums\AuctionPrivate;
+use App\Enums\AuctionLotType;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,7 +25,11 @@ class Auction extends Model
     // protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
-
+    protected $casts = [
+        'lot_type' => AuctionLotType::class,
+        'is_private' => AuctionPrivate::class,
+        'type' => AuctionType::class
+    ];
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS

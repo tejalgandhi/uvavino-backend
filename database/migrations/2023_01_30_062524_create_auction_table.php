@@ -16,11 +16,11 @@ return new class extends Migration
         if (!Schema::hasTable('auctions')) {
             Schema::create('auctions', function (Blueprint $table) {
                 $table->id();
-                $table->enum('lot_type', ['1', '2'])->comment('1=>single,2=>multi')->default(1);
+                $table->integer('lot_type')->default(1);
                 $table->string('title');
                 $table->longText('description')->nullable();
-                $table->enum('is_private', ['0', '1'])->comment('0=>No,1=>Yes')->default(1);
-                $table->enum('type', ['0', '1'])->comment('0=>live,1=>timebased')->default(1);
+                $table->integer('is_private')->default(1);
+                $table->integer('type')->default(1);
                 $table->integer('max_price')->default(0);
                 $table->string('invitations')->nullable();
                 $table->timestamps();

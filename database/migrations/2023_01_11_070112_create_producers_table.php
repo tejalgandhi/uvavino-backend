@@ -22,8 +22,6 @@ return new class extends Migration
                 $table->string('slug')->nullable();
                 $table->integer('status')->default(1);
                 $table->integer('is_approved')->default(1);
-//                $table->enum('status', ['0', '1'])->comment('0=>Inactive,1=>active')->default(1);
-//                $table->enum('is_approved', ['0', '1'])->comment('0=>No,1=>Yes')->default(1);
                 $table->timestamps();
                 $table->foreign('wine_user_id')->references('id')->on('wine_users')->onDelete('cascade');
                 $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
