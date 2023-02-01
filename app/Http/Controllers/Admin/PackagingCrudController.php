@@ -40,7 +40,7 @@ class PackagingCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::addColumn([
-            'label'     => "Product",
+            'label'     => __("Product"),
             'type'      => 'select',
             'name'      => 'product_id',
             'entity'    => 'product',
@@ -71,7 +71,7 @@ class PackagingCrudController extends CrudController
         CRUD::setValidation(PackagingRequest::class);
 
         CRUD::addField([
-            'label'     => "Product",
+            'label'     => __("Product"),
             'type'      => 'select',
             'name'      => 'product_id',
             'entity'    => 'product',
