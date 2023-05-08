@@ -314,33 +314,7 @@ class BasketCrudController extends CrudController
      * @see https://backpackforlaravel.com/docs/crud-operation-update
      * @return void
      */
-    public function formatProductArr($product,$basket_id)
-    {
-        if (empty($product)) {
-            return [];
-        }
-//        dd($product);
-//        $productPrice = json_decode($product, true);
-//        $sizeOptions = \App\Models\MesoCross\Size::pluck('id', 'name')->toArray();
-        foreach ($product as $key => $value) {
-            $slug = Str::slug($value['wine_name']);
-            $count = 1;
-            while(Product::whereSlug($slug)->count() > 0) {
-                $slug = Str::slug($value['wine_name'] . "-" . $count);
-                $count++;
-            }
-            $product[$key]['basket_id'] = $value['basket_id'] =  $basket_id;
-            $product[$key]['slug'] = $value['slug'] = $slug;
-            $id = $value['id'];
-            unset($value['id']);
-//            Product::updateOrCreate(
-//                ['id' => $id],
-//                $value
-//            );
 
-        }
-        return $product;
-    }
     public function store()
     {
         $this->crud->hasAccessOrFail('create');
@@ -352,7 +326,6 @@ class BasketCrudController extends CrudController
 
 
         $item = $this->crud->create($this->crud->getStrippedSaveRequest($request));
-//        $this->formatProductArr($product,$item->id);
 
         $this->data['entry'] = $this->crud->entry = $item;
 
@@ -368,13 +341,12 @@ class BasketCrudController extends CrudController
     {
         $this->crud->hasAccessOrFail('update');
         // get entry ID from Request (makes sure its the last ID for nested resources)
-        $id = $this->crud->getCurrentEntryId() ?? $id;
         $this->crud->setOperationSetting('fields', $this->crud->getUpdateFields($id));
         // get the info for that entry
         $this->data['entry'] = $this->crud->getEntry($id);
         $this->data['crud'] = $this->crud;
         $this->data['saveAction'] = $this->crud->getSaveAction();
-        $this->data['title'] = $this->crud->getTitle() ?? trans('backpack::crud.edit') . ' ' . $this->crud->entity_name;
+        $this->data['title'] = trans('backpack::crud.edit') . ' ' . $this->crud->entity_name;
 
         $this->data['id'] = $id;
         return view($this->crud->getEditView(), $this->data);
@@ -388,7 +360,6 @@ class BasketCrudController extends CrudController
         // update the row in the db
         $item = $this->crud->update($request->get($this->crud->model->getKeyName($request->except('product'))), $this->crud->getStrippedSaveRequest($request));
         $product = $this->crud->getStrippedSaveRequest($request)['product'] ?? [];
-//        $this->formatProductArr($product,$item->id);
 
 
         $this->data['entry'] = $this->crud->entry = $item;

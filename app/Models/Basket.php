@@ -52,17 +52,7 @@ class Basket extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
-    public static function pluckedWithProductReference()
-    {
-        $products =  self::select('id','name')->with('products')->get();
-        $pluckArray = [];
-        foreach ($products as $key => $value) {
-            foreach ($value->products as $childKey => $childValue ) {
-                $pluckArray[$childValue->pivot->id] = "{$value->wine_name} - {$childValue->pivot->id}";
-            }
-        }
-        return $pluckArray;
-    }
+
     public function products()
     {
         return $this->belongsToMany(Product::class, 'products', 'basket_id', 'id')->withPivot(['id']);
