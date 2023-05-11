@@ -6,8 +6,8 @@ namespace App\Enums;
 enum AuctionPrivate: int
 {
 
-case Single = 1;
-case Multi = 2;
+case Timebased = 1;
+case Live = 2;
 
 }
 

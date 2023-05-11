@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\AuctionRequest;
+use App\Models\Basket;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
@@ -46,15 +47,6 @@ class AuctionCrudController extends CrudController
          * - CRUD::column('price')->type('number');
          * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
          */
-        CRUD::addColumn([
-            'name'  => 'lot_type',
-            'label' => 'Lot Type',
-            'type'  => 'enum',
-            'options' => [
-                '1' => 'Single',
-                '2' => 'Multi'
-            ]
-        ]);
         CRUD::column('title');
         CRUD::column('description');
         CRUD::addColumn([
@@ -72,7 +64,7 @@ class AuctionCrudController extends CrudController
             'type'  => 'enum',
             'options' => [
                 '1' => 'Timebased',
-                '0' => 'Live'
+                '2' => 'Live'
             ]
         ]);
         CRUD::column('max_price');
@@ -88,15 +80,17 @@ class AuctionCrudController extends CrudController
     protected function setupCreateOperation()
     {
         CRUD::setValidation(AuctionRequest::class);
+        $basketOptions = Basket::pluck('title', 'id');
 
         CRUD::addField([
-            'name'  => 'lot_type',
-            'label' => 'Lot Type',
-            'type'  => 'enum',
-            'options' => [
-                '1' => 'Single',
-                '2' => 'Multi'
-            ]
+            'name' => 'basket_id',
+            'label' => __('Basket'),
+            'type' => 'select_from_array',
+            'options' => $basketOptions,
+            'attributes' => [
+                'class' => 'form-control size-dropdown',
+            ],
+            'allows_null' => false,
         ]);
         CRUD::Field('title');
         CRUD::Field('description');
@@ -115,14 +109,14 @@ class AuctionCrudController extends CrudController
             'type'  => 'enum',
             'options' => [
                 '1' => 'Timebased',
-                '0' => 'Live'
+                '2' => 'Live'
             ]
         ]);
         CRUD::Field('max_price');
         CRUD::addField([
             'name' => 'invitations',
             'label' => __('invitations'),
-            'type' => 'select2_multiple',
+            'type' => 'select_multiple',
             'entity' => 'invitations',
             'attribute' => 'username',
             'model' => "App\Models\WineUser",
