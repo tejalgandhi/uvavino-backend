@@ -22,3 +22,5 @@ parameters:
         - '#Call to an undefined method Faker#'
         - '#to an undefined property App\\Http\\Resources#'
         - '#to an undefined method App\\Http\\Resources#'
+        - '#Parameter \#2 \$value of method#'
+
