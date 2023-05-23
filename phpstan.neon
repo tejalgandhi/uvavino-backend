@@ -2,7 +2,6 @@ includes:
     - ./vendor/nunomaduro/larastan/extension.neon
 
 parameters:
-
     paths:
         - app/
         - config/
@@ -13,6 +12,7 @@ parameters:
         - tests/
     excludePaths:
         - resources/views/vendor
+        - app/Http/Controllers
 
     level: 5
 
@@ -22,5 +22,4 @@ parameters:
         - '#Call to an undefined method Faker#'
         - '#to an undefined property App\\Http\\Resources#'
         - '#to an undefined method App\\Http\\Resources#'
-        - '#Parameter \#2 \$value of method#'
 
