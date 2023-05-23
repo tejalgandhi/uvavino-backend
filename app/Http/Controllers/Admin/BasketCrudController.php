@@ -358,8 +358,8 @@ class BasketCrudController extends CrudController
         // execute the FormRequest authorization and validation, if one is required
         $request = $this->crud->validateRequest();
         // update the row in the db
-        $item = $this->crud->update($request->get($this->crud->model->getKeyName($request->except('product'))), $this->crud->getStrippedSaveRequest($request));
-        $product = $this->crud->getStrippedSaveRequest($request)['product'] ?? [];
+        $item = $this->crud->update($request->get($this->crud->model->getKeyName($request->except('products'))), $this->crud->getStrippedSaveRequest($request));
+        $product = $this->crud->getStrippedSaveRequest($request)['products'] ?? [];
 
 
         $this->data['entry'] = $this->crud->entry = $item;
