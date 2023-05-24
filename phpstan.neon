@@ -12,7 +12,6 @@ parameters:
         - tests/
     excludePaths:
         - resources/views/vendor
-        - app/Http/Controllers
 
     level: 5
 

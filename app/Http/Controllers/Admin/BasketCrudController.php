@@ -341,6 +341,7 @@ class BasketCrudController extends CrudController
     {
         $this->crud->hasAccessOrFail('update');
         // get entry ID from Request (makes sure its the last ID for nested resources)
+        //@phpstan-ignore-next-line
         $this->crud->setOperationSetting('fields', $this->crud->getUpdateFields($id));
         // get the info for that entry
         $this->data['entry'] = $this->crud->getEntry($id);
