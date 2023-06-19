@@ -23,6 +23,8 @@ Auth::routes();
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
+
 Route::get('/migrate', function(){
     Artisan::call('route:clear');
     Artisan::call('view:clear');
