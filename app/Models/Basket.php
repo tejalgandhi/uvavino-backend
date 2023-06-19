@@ -1,0 +1,74 @@
+<?php
+
+namespace App\Models;
+
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
+
+class Basket extends Model
+{
+    use CrudTrait;
+
+    /*
+    |--------------------------------------------------------------------------
+    | GLOBAL VARIABLES
+    |--------------------------------------------------------------------------
+    */
+
+    protected $table = 'baskets';
+    // protected $primaryKey = 'id';
+    // public $timestamps = false;
+    protected $guarded = ['id'];
+    // protected $fillable = [];
+    // protected $hidden = [];
+    // protected $dates = [];
+
+    /*
+    |--------------------------------------------------------------------------
+    | FUNCTIONS
+    |--------------------------------------------------------------------------
+    */
+
+    /*
+    |--------------------------------------------------------------------------
+    | RELATIONS
+    |--------------------------------------------------------------------------
+    */
+
+    /*
+    |--------------------------------------------------------------------------
+    | SCOPES
+    |--------------------------------------------------------------------------
+    */
+
+    /*
+    |--------------------------------------------------------------------------
+    | ACCESSORS
+    |--------------------------------------------------------------------------
+    */
+
+    /*
+    |--------------------------------------------------------------------------
+    | MUTATORS
+    |--------------------------------------------------------------------------
+    */
+
+    protected static function boot() {
+        parent::boot();
+
+        static::creating(function ($basket) {
+            $slug = Str::slug($basket->title);
+            $count = 1;
+            while(static::whereSlug($slug)->count() > 0) {
+                $slug = Str::slug($basket->title . "-" . $count);
+                $count++;
+            }
+            $basket->slug = $slug;
+        });
+    }
+    public function products()
+    {
+        return $this->hasMany( Product::class, 'basket_id', 'id');
+    }
+}

@@ -28,4 +28,5 @@ Route::group([
     Route::crud('packaging', 'PackagingCrudController');
     Route::crud('auction', 'AuctionCrudController');
     Route::crud('auction-package', 'AuctionPackageCrudController');
+    Route::crud('basket', 'BasketCrudController');
 });
