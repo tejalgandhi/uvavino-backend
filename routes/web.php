@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +23,12 @@ Auth::routes();
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/migrate', function(){
+    Artisan::call('route:clear');
+    Artisan::call('view:clear');
+    Artisan::call('migrate:rollback');
+    dd('migrated!');
+});
 // Pages
 Route::get('{page}/{subs?}', [PageController::class, 'index'])->middleware('web')
     ->where(['page' => '^((?!admin).)|[^/]*$', 'subs' => '.*']);
