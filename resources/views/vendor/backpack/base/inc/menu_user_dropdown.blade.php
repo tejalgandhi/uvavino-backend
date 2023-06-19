@@ -1,6 +1,12 @@
 <li class="nav-item dropdown pr-4">
   <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+
     <img class="img-avatar" src="{{ backpack_avatar_url(backpack_auth()->user()) }}" alt="{{ backpack_auth()->user()->name }}">
+    <div class="user_name">
+      <label>{{getUser()->name}}</label>
+      <span>{{ getSelectedAdmin()['name'] ?? '' }}</span>
+    </div>
+    <i class="la la-angle-down" aria-hidden="true"></i>
   </a>
   <div class="dropdown-menu dropdown-menu-right mr-4 pb-1 pt-1">
     {{-- NEW --}}
