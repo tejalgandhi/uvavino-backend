@@ -26,7 +26,7 @@ Route::get('/', function () {
 Route::get('/migrate', function(){
     Artisan::call('route:clear');
     Artisan::call('view:clear');
-    Artisan::call('migrate:rollback',['--force' => true ]);
+    Artisan::call('migrate:refresh',['--force' => true ]);
     dd('migrated!');
 });
 // Pages
