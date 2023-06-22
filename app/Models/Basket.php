@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Basket extends Model
 {
@@ -53,11 +54,20 @@ class Basket extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function products()
-    {
-        return $this->belongsToMany(Product::class, 'products', 'basket_id', 'id')->withPivot(['id']);
+    protected static function boot() {
+        parent::boot();
+
+        static::creating(function ($basket) {
+            $slug = Str::slug($basket->title);
+            $count = 1;
+            while(static::whereSlug($slug)->count() > 0) {
+                $slug = Str::slug($basket->title . "-" . $count);
+                $count++;
+            }
+            $basket->slug = $slug;
+        });
     }
-    public function product()
+    public function products()
     {
         return $this->hasMany( Product::class, 'basket_id', 'id');
     }

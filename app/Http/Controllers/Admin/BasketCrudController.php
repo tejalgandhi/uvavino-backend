@@ -91,7 +91,7 @@ class BasketCrudController extends CrudController
         CRUD::field('dimensions');
         CRUD::addField(
             [ // Table
-                'name' => 'product',
+                'name' => 'products',
                 'label' => 'Product',
                 'type' => 'repeatable',
                 'wrapper' => [
@@ -322,7 +322,7 @@ class BasketCrudController extends CrudController
         // execute the FormRequest authorization and validation, if one is required
         $request = $this->crud->validateRequest();
         // insert item in the db
-        $product = $this->crud->getStrippedSaveRequest($request)['product'] ?? [];
+        $product = $this->crud->getStrippedSaveRequest($request)['products'] ?? [];
 
 
         $item = $this->crud->create($this->crud->getStrippedSaveRequest($request));
@@ -341,6 +341,7 @@ class BasketCrudController extends CrudController
     {
         $this->crud->hasAccessOrFail('update');
         // get entry ID from Request (makes sure its the last ID for nested resources)
+        //@phpstan-ignore-next-line
         $this->crud->setOperationSetting('fields', $this->crud->getUpdateFields($id));
         // get the info for that entry
         $this->data['entry'] = $this->crud->getEntry($id);
@@ -358,8 +359,8 @@ class BasketCrudController extends CrudController
         // execute the FormRequest authorization and validation, if one is required
         $request = $this->crud->validateRequest();
         // update the row in the db
-        $item = $this->crud->update($request->get($this->crud->model->getKeyName($request->except('product'))), $this->crud->getStrippedSaveRequest($request));
-        $product = $this->crud->getStrippedSaveRequest($request)['product'] ?? [];
+        $item = $this->crud->update($request->get($this->crud->model->getKeyName($request->except('products'))), $this->crud->getStrippedSaveRequest($request));
+        $product = $this->crud->getStrippedSaveRequest($request)['products'] ?? [];
 
 
         $this->data['entry'] = $this->crud->entry = $item;
