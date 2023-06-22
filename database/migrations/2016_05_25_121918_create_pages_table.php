@@ -15,7 +15,6 @@ class CreatePagesTable extends Migration
     {
         // TODO: use JSON data type for 'extras' instead of string
         if (!Schema::hasTable('pages')) {
-
             Schema::create('pages', function (Blueprint $table) {
                 $table->id();
                 $table->string('template');

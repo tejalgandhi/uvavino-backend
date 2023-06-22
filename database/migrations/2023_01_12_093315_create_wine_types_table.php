@@ -14,7 +14,6 @@ return new class extends Migration
     public function up()
     {
         if (!Schema::hasTable('wine_types')) {
-
             Schema::create('wine_types', function (Blueprint $table) {
                 $table->id();
                 $table->string('name');

@@ -14,7 +14,6 @@ return new class extends Migration
     public function up()
     {
         if (!Schema::hasTable('countries')) {
-
             Schema::create('countries', function (Blueprint $table) {
                 $table->id();
                 $table->string('name')->nullable();

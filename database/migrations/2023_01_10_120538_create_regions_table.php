@@ -14,7 +14,6 @@ return new class extends Migration
     public function up()
     {
         if (!Schema::hasTable('regions')) {
-
             Schema::create('regions', function (Blueprint $table) {
                 $table->id();
                 $table->unsignedBigInteger('country_id');
