@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         if (!Schema::hasTable('wine_users')) {
+
             Schema::create('wine_users', function (Blueprint $table) {
                 $table->id();
                 $table->string('username');

@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         if (!Schema::hasTable('auctions')) {
+
             Schema::create('auctions', function (Blueprint $table) {
                 $table->id();
                 $table->integer('lot_type')->default(1);

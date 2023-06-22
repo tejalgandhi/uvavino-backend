@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         if (!Schema::hasTable('producers')) {
+
             Schema::create('producers', function (Blueprint $table) {
                 $table->id();
                 $table->unsignedBigInteger('wine_user_id');

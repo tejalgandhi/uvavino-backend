@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         if (!Schema::hasTable('packaging')) {
+
             Schema::create('packaging', function (Blueprint $table) {
                 $table->id();
                 $table->foreignId('product_id')->constrained();

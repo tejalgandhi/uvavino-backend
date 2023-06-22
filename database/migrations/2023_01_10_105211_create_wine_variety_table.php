@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         if (!Schema::hasTable('wine_varieties')) {
+
             Schema::create('wine_varieties', function (Blueprint $table) {
                 $table->id();
                 $table->string('name')->nullable();
