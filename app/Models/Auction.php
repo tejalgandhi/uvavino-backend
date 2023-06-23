@@ -24,10 +24,6 @@ class Auction extends Model
     // protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
-    protected $casts = [
-        'is_private' => AuctionPrivate::class,
-        'type' => AuctionType::class
-    ];
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS
@@ -59,6 +55,6 @@ class Auction extends Model
     */
     public function invitations()
     {
-        return $this->belongsTo('App\Models\WineUser', 'id');
+        return $this->belongsToMany('App\Models\WineUser', 'auction_invites', 'auction_id', 'wine_user_id');
     }
 }

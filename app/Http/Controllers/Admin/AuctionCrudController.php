@@ -6,7 +6,8 @@ use App\Http\Requests\AuctionRequest;
 use App\Models\Basket;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
-
+use App\Enums\AuctionPrivate;
+use App\Enums\AuctionType;
 /**
  * Class AuctionCrudController
  * @package App\Http\Controllers\Admin
@@ -50,22 +51,24 @@ class AuctionCrudController extends CrudController
         CRUD::column('title');
         CRUD::column('description');
         CRUD::addColumn([
-            'name'  => 'is_private',
-            'label' => 'Private',
-            'type'  => 'enum',
-            'options' => [
-                '1' => 'Yes',
-                '0' => 'No'
-            ]
+            'name' => 'is_private',
+            'label' => __('Private'),
+            'type' => 'select_from_array',
+            'options' => AuctionPrivate::getValues(),
+            'attributes' => [
+                'class' => 'form-control size-dropdown',
+            ],
+            'allows_null' => false,
         ]);
         CRUD::addColumn([
-            'name'  => 'type',
-            'label' => 'Type',
-            'type'  => 'enum',
-            'options' => [
-                '1' => 'Timebased',
-                '2' => 'Live'
-            ]
+            'name' => 'type',
+            'label' => __('Type'),
+            'type' => 'select_from_array',
+            'options' => AuctionType::getValues(),
+            'attributes' => [
+                'class' => 'form-control size-dropdown',
+            ],
+            'allows_null' => false,
         ]);
         CRUD::column('max_price');
 
@@ -95,31 +98,34 @@ class AuctionCrudController extends CrudController
         CRUD::Field('title');
         CRUD::Field('description');
         CRUD::addField([
-            'name'  => 'is_private',
-            'label' => 'Private',
-            'type'  => 'enum',
-            'options' => [
-                '1' => 'Yes',
-                '0' => 'No'
-            ]
+            'name' => 'is_private',
+            'label' => __('Private'),
+            'type' => 'select_from_array',
+            'options' => AuctionPrivate::getValues(),
+            'attributes' => [
+                'class' => 'form-control size-dropdown',
+            ],
+            'allows_null' => false,
         ]);
         CRUD::addField([
-            'name'  => 'type',
-            'label' => 'Type',
-            'type'  => 'enum',
-            'options' => [
-                '1' => 'Timebased',
-                '2' => 'Live'
-            ]
+            'name' => 'type',
+            'label' => __('Type'),
+            'type' => 'select_from_array',
+            'options' => AuctionType::getValues(),
+            'attributes' => [
+                'class' => 'form-control size-dropdown',
+            ],
+            'allows_null' => false,
         ]);
         CRUD::Field('max_price');
         CRUD::addField([
             'name' => 'invitations',
             'label' => __('invitations'),
-            'type' => 'select_multiple',
+            'type' => 'select2_multiple',
             'entity' => 'invitations',
             'attribute' => 'username',
             'model' => "App\Models\WineUser",
+            'pivot' => true,
         ]);
 
 
