@@ -53,6 +53,7 @@ class Basket extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
+
     protected static function boot() {
         parent::boot();
 
@@ -67,10 +68,6 @@ class Basket extends Model
         });
     }
     public function products()
-    {
-        return $this->belongsToMany(Product::class, 'products', 'basket_id', 'id')->withPivot(['id']);
-    }
-    public function product()
     {
         return $this->hasMany( Product::class, 'basket_id', 'id');
     }
