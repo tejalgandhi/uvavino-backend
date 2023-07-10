@@ -25,8 +25,8 @@ class AuctionRequest extends FormRequest
     public function rules()
     {
         return [
+             'basket_id' => 'required',
              'title' => 'required|min:5|max:255',
-             'lot_type' => 'required',
              'description' => 'required',
              'is_private' => 'required',
              'type' => 'required',
