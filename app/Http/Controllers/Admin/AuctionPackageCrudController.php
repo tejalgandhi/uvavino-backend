@@ -15,7 +15,7 @@ class AuctionPackageCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+//    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
@@ -71,14 +71,14 @@ class AuctionPackageCrudController extends CrudController
          */
     }
 
-    /**
-     * Define what happens when the Update operation is loaded.
-     *
-     * @see https://backpackforlaravel.com/docs/crud-operation-update
-     * @return void
-     */
-    protected function setupUpdateOperation()
-    {
-        $this->setupCreateOperation();
-    }
+//    /**
+//     * Define what happens when the Update operation is loaded.
+//     *
+//     * @see https://backpackforlaravel.com/docs/crud-operation-update
+//     * @return void
+//     */
+//    protected function setupUpdateOperation()
+//    {
+//        $this->setupCreateOperation();
+//    }
 }
