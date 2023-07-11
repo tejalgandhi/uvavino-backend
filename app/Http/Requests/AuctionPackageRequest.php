@@ -26,7 +26,8 @@ class AuctionPackageRequest extends FormRequest
     {
         return [
              'name' => 'required|min:5|max:255',
-             'qty' => 'required|numeric',
+            'image' => 'required',
+            'qty' => 'required|numeric',
              'amount' => 'required|numeric',
         ];
     }

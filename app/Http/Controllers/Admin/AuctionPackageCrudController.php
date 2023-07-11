@@ -41,6 +41,32 @@ class AuctionPackageCrudController extends CrudController
     {
 
         CRUD::column('name');
+        CRUD::addColumn([
+            'name' => 'image', // The db column name
+            'label' => __('Image'), // Table column heading
+            'type' => 'image',
+            'disk' => 'uploads',
+        ]);
+        CRUD::column('qty');
+        CRUD::column('amount');
+        /**
+         * Columns can be defined using the fluent syntax or array syntax:
+         * - CRUD::column('price')->type('number');
+         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
+         */
+    }
+
+    protected function setupShowOperation()
+    {
+
+        CRUD::column('name');
+        CRUD::column('slug');
+        CRUD::addColumn([
+            'name' => 'image', // The db column name
+            'label' => __('Image'), // Table column heading
+            'type' => 'image',
+            'disk' => 'uploads',
+        ]);
         CRUD::column('qty');
         CRUD::column('amount');
         /**
@@ -61,6 +87,17 @@ class AuctionPackageCrudController extends CrudController
         CRUD::setValidation(AuctionPackageRequest::class);
 
         CRUD::field('name');
+        CRUD::addField([
+            'name' => 'slug',
+            'label' => __('Slug'),
+            'type' => 'hidden',
+        ]);
+        CRUD::addField([
+            'name' => 'image', // The db column name
+            'label' => __('Image'), // Table column heading
+            'type' => 'image',
+            'disk' => 'uploads',
+        ]);
         CRUD::field('qty');
         CRUD::field('amount');
 

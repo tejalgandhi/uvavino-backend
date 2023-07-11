@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class AuctionPackage extends Model
 {
@@ -52,4 +53,24 @@ class AuctionPackage extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
+    public static function boot()
+    {
+        parent::boot();
+        static::deleting(function ($obj) {
+            \Storage::disk('uploads')->delete($obj->image);
+        });
+    }
+    public function setSlugAttribute($value)
+    {
+        $name = $this->attributes['name'] ?? '';
+        $slug = Str::slug($name, '-');
+        if (isset($this->attributes['id'])) {
+            $count = $this->whereSlug($slug)->where('id', '!=', $this->attributes['id'])->count();
+            if ($count > 0) {
+                $count++;
+                $slug = $slug . '-' . $count;
+            }
+        }
+        $this->attributes['slug'] = $slug;
+    }
 }
