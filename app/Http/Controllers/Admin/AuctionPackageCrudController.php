@@ -69,6 +69,7 @@ class AuctionPackageCrudController extends CrudController
         ]);
         CRUD::column('qty');
         CRUD::column('amount');
+        CRUD::column('discount_amount');
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
@@ -100,6 +101,7 @@ class AuctionPackageCrudController extends CrudController
         ]);
         CRUD::field('qty');
         CRUD::field('amount');
+        CRUD::field('discount_amount');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
