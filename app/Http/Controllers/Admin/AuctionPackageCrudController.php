@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\AuctionPackageRequest;
+use App\Models\AuctionPackage;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Http\Request;
 
 /**
  * Class AuctionPackageCrudController
@@ -15,7 +17,7 @@ class AuctionPackageCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
-//    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
@@ -39,6 +41,7 @@ class AuctionPackageCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        $this->crud->addButtonFromView('top', 'reorderbestseller', 'reorderbestseller', 'beginning');
 
         CRUD::column('name');
         CRUD::addColumn([
@@ -56,6 +59,32 @@ class AuctionPackageCrudController extends CrudController
          */
     }
 
+    public function reorder_product(Request $request,$slug)
+    {
+        if ($request->isMethod('post'))
+        {
+            $count = 0;
+            $data = $request->all();
+
+            if(isset($data['tree']))
+            {
+                $tree = collect($data['tree'])->pluck('item_id')->all();
+                foreach (array_filter($tree) as $key => $id) {
+                    AuctionPackage::where('id', $id)->update([$slug.'_order' => $key+1]);
+                }
+            }
+        }
+        $this->crud->set('reorder.max_level', AuctionPackage::MAX_DEPTH);
+        $this->crud->addClause('where', $slug, '=', '1');
+        $this->crud->orderBy($slug.'_order');
+        $this->crud->set('reorder.label', 'name');
+        $this->data['crud'] = $this->crud;
+        $this->data['entries'] = $this->data['crud']->getEntries();
+        $this->data['slug'] = $slug;
+        return view('vendor/auction-packages/sort_new_release', $this->data);
+    }
+
+
     protected function setupShowOperation()
     {
 
@@ -70,6 +99,7 @@ class AuctionPackageCrudController extends CrudController
         CRUD::column('qty');
         CRUD::column('amount');
         CRUD::column('discount_amount');
+
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
@@ -102,7 +132,16 @@ class AuctionPackageCrudController extends CrudController
         CRUD::field('qty');
         CRUD::field('amount');
         CRUD::field('discount_amount');
-
+        CRUD::addField([
+            'name' => 'bestsellers',
+            'label' => 'Best Seller',
+            'type' => 'checkbox',
+        ]);
+        CRUD::addField([
+            'name' => 'new_release',
+            'label' => 'New Release',
+            'type' => 'checkbox',
+        ]);
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');
@@ -116,8 +155,48 @@ class AuctionPackageCrudController extends CrudController
 //     * @see https://backpackforlaravel.com/docs/crud-operation-update
 //     * @return void
 //     */
-//    protected function setupUpdateOperation()
-//    {
+    protected function setupUpdateOperation()
+    {
 //        $this->setupCreateOperation();
-//    }
+        CRUD::setValidation(AuctionPackageRequest::class);
+
+        CRUD::field('name');
+        CRUD::addField([
+            'name' => 'image', // The db column name
+            'label' => __('Image'), // Table column heading
+            'type' => 'image',
+            'disk' => 'uploads',
+        ]);
+        CRUD::addField([
+            'name' => 'qty',
+            'label' => __('qty'),
+            'attributes' => [
+                'readonly' => 'readonly',
+            ],
+        ]);
+        CRUD::addField([
+            'name' => 'amount',
+            'label' => __('Amount'),
+            'attributes' => [
+                'readonly' => 'readonly',
+            ],
+        ]);
+        CRUD::addField([
+            'name' => 'discount_amount',
+            'label' => __('Discount Amount'),
+            'attributes' => [
+                'readonly' => 'readonly',
+            ],
+        ]);
+        CRUD::addField([
+            'name' => 'bestsellers',
+            'label' => 'Best Seller',
+            'type' => 'checkbox',
+        ]);
+        CRUD::addField([
+            'name' => 'new_release',
+            'label' => 'New Release',
+            'type' => 'checkbox',
+        ]);
+    }
 }

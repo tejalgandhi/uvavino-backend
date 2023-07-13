@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
+use GemaDigital\Framework\app\Models\Traits\SaveMedia;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class AuctionPackage extends Model
 {
     use CrudTrait;
+    use SaveMedia;
 
     /*
     |--------------------------------------------------------------------------
@@ -23,6 +25,7 @@ class AuctionPackage extends Model
     // protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
+    const MAX_DEPTH = 1;
 
     /*
     |--------------------------------------------------------------------------
@@ -72,5 +75,10 @@ class AuctionPackage extends Model
             }
         }
         $this->attributes['slug'] = $slug;
+    }
+    public function setImageAttribute($value)
+    {
+        $filename = uniqid();
+        $this->saveImage($this, $value, 'uvavino/img/', $filename, [], 100, 'image');
     }
 }

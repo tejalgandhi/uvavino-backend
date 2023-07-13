@@ -5,10 +5,10 @@ if (! function_exists('example')) {
         return 'example';
     }
 }
-if (!function_exists('getUserName')) {
+if (!function_exists('getUser')) {
     function getUser()
     {
-        return \Auth::user();
+        return backpack_auth()->user();
     }
 }
 if (!function_exists('getSelectedAdmin')) {

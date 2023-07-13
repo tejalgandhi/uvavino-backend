@@ -6,6 +6,9 @@
 // This route file is loaded automatically by Backpack\Base.
 // Routes you generate using Backpack\Generators will be placed here.
 
+use App\Http\Controllers\Admin\AuctionPackageCrudController;
+use Illuminate\Support\Facades\Route;
+
 Route::group([
     'prefix' => config('backpack.base.route_prefix', 'admin'),
     'middleware' => ['web', config('backpack.base.middleware_key', 'admin')],
@@ -28,4 +31,7 @@ Route::group([
     Route::crud('auction', 'AuctionCrudController');
     Route::crud('auction-package', 'AuctionPackageCrudController');
     Route::crud('basket', 'BasketCrudController');
+    Route::get('auction-package/reorder/{slug}', [AuctionPackageCrudController::class,'reorder_product']);
+    Route::post('auction-package/reorder/{slug}', [AuctionPackageCrudController::class,'reorder_product']);
+
 });
