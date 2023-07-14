@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\ProductRequest;
+use App\Models\Auction;
+use App\Models\Basket;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
 /**
@@ -40,7 +43,7 @@ class ProductCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::addColumn([  // Select
+         CRUD::addColumn([  // Select
             'label'     => __("User"),
             'type'      => 'select',
             'name'      => 'wine_user_id', // the db column for the foreign key

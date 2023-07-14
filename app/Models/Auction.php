@@ -24,6 +24,8 @@ class Auction extends Model
     // protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
+    const MAX_DEPTH = 1;
+
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS
