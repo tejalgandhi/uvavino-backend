@@ -60,7 +60,9 @@ class AuctionPackage extends Model
     {
         parent::boot();
         static::deleting(function ($obj) {
-            \Storage::disk('uploads')->delete($obj->image);
+            if(!is_null($obj->image)) {
+                \Storage::disk('uploads')->delete($obj->image);
+            }
         });
     }
     public function setSlugAttribute($value)

@@ -127,7 +127,16 @@ class AuctionCrudController extends CrudController
             'model' => "App\Models\WineUser",
             'pivot' => true,
         ]);
-
+        CRUD::addField([
+            'name' => 'bestsellers',
+            'label' => 'Best Seller',
+            'type' => 'checkbox',
+        ]);
+        CRUD::addField([
+            'name' => 'new_release',
+            'label' => 'New Release',
+            'type' => 'checkbox',
+        ]);
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
