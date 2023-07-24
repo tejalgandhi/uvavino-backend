@@ -41,4 +41,5 @@ Route::group([
     Route::post('basket/reorder/{slug}', [BasketCrudController::class,'reorder_product']);
 
     Route::crud('app-variable', 'AppVariableCrudController');
+    Route::crud('wine-type', 'WineTypeCrudController');
 });
