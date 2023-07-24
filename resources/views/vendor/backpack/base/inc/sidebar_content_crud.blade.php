@@ -61,3 +61,4 @@
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('auction-package') }}"><i class="nav-icon la la-th-list"></i> Auction packages</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('auction') }}"><i class="nav-icon la la-th-list"></i> Auctions</a></li>
 
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('app-variable') }}"><i class="nav-icon la la-th-list"></i> App variables</a></li>
