@@ -4,9 +4,8 @@ namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 
-class Basket extends Model
+class AppVariable extends Model
 {
     use CrudTrait;
 
@@ -16,14 +15,13 @@ class Basket extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'baskets';
+    protected $table = 'app_variables';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
     // protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
-    const MAX_DEPTH = 1;
 
     /*
     |--------------------------------------------------------------------------
@@ -54,22 +52,4 @@ class Basket extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
-
-    protected static function boot() {
-        parent::boot();
-
-        static::creating(function ($basket) {
-            $slug = Str::slug($basket->title);
-            $count = 1;
-            while(static::whereSlug($slug)->count() > 0) {
-                $slug = Str::slug($basket->title . "-" . $count);
-                $count++;
-            }
-            $basket->slug = $slug;
-        });
-    }
-    public function products()
-    {
-        return $this->hasMany( Product::class, 'basket_id', 'id');
-    }
 }

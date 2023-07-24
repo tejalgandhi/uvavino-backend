@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class WineType extends Model
 {
+    use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use HasFactory;
 
     protected $casts = [

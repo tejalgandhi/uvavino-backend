@@ -7,6 +7,8 @@
 // Routes you generate using Backpack\Generators will be placed here.
 
 use App\Http\Controllers\Admin\AuctionPackageCrudController;
+use App\Http\Controllers\Admin\AuctionCrudController;
+use App\Http\Controllers\Admin\BasketCrudController;
 use Illuminate\Support\Facades\Route;
 
 Route::group([
@@ -33,5 +35,11 @@ Route::group([
     Route::crud('basket', 'BasketCrudController');
     Route::get('auction-package/reorder/{slug}', [AuctionPackageCrudController::class,'reorder_product']);
     Route::post('auction-package/reorder/{slug}', [AuctionPackageCrudController::class,'reorder_product']);
+    Route::get('auction/reorder/{slug}', [AuctionCrudController::class,'reorder_product']);
+    Route::post('auction/reorder/{slug}', [AuctionCrudController::class,'reorder_product']);
+    Route::get('basket/reorder/{slug}', [BasketCrudController::class,'reorder_product']);
+    Route::post('basket/reorder/{slug}', [BasketCrudController::class,'reorder_product']);
 
+    Route::crud('app-variable', 'AppVariableCrudController');
+    Route::crud('wine-type', 'WineTypeCrudController');
 });

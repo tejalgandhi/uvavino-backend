@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\BasketRequest;
+use App\Models\Basket;
 use App\Models\Country;
 use App\Models\DrinkType;
 use App\Models\Product;
 use App\Models\WineUser;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 /**
@@ -44,6 +46,10 @@ class BasketCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        $this->crud->addButtonFromView('top', 'reorderbestseller', 'product-reorderbestseller', 'beginning');
+        $this->crud->addButtonFromView('top', 'reorderreleases', 'product-reorderreleases', 'beginning');
+
+
         CRUD::column('title');
         CRUD::column('stock');
         CRUD::column('price');
@@ -52,6 +58,30 @@ class BasketCrudController extends CrudController
          * - CRUD::column('price')->type('number');
          * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
          */
+    }
+    public function reorder_product(Request $request,$slug)
+    {
+        if ($request->isMethod('post'))
+        {
+            $count = 0;
+            $data = $request->all();
+
+            if(isset($data['tree']))
+            {
+                $tree = collect($data['tree'])->pluck('item_id')->all();
+                foreach (array_filter($tree) as $key => $id) {
+                    Basket::where('id', $id)->update([$slug.'_order' => $key+1]);
+                }
+            }
+        }
+        $this->crud->set('reorder.max_level', Basket::MAX_DEPTH);
+        $this->crud->addClause('where', $slug, '=', '1');
+        $this->crud->orderBy($slug.'_order');
+        $this->crud->set('reorder.label', 'title');
+        $this->data['crud'] = $this->crud;
+        $this->data['entries'] = $this->data['crud']->getEntries();
+        $this->data['slug'] = $slug;
+        return view('vendor/product/sort_new_release', $this->data);
     }
 
     /**
@@ -300,7 +330,16 @@ class BasketCrudController extends CrudController
             ]
         );
 
-
+        CRUD::addField([
+            'name' => 'bestsellers',
+            'label' => 'Best Seller',
+            'type' => 'checkbox',
+        ]);
+        CRUD::addField([
+            'name' => 'new_release',
+            'label' => 'New Release',
+            'type' => 'checkbox',
+        ]);
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');

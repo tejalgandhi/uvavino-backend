@@ -184,9 +184,6 @@ class AuctionPackageCrudController extends CrudController
         CRUD::addField([
             'name' => 'discount_amount',
             'label' => __('Discount Amount'),
-            'attributes' => [
-                'readonly' => 'readonly',
-            ],
         ]);
         CRUD::addField([
             'name' => 'bestsellers',

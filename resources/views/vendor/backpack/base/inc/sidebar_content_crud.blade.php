@@ -2,7 +2,7 @@
 
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('basket') }}"><i class="nav-icon la la-th-list"></i> Baskets</a></li>
 
-<li class="nav-item"><a class="nav-link" href="{{ backpack_url('product') }}"><i class="nav-icon la la-th-list"></i> {{ ucfirst(__("products")) }}</a></li>
+{{--<li class="nav-item"><a class="nav-link" href="{{ backpack_url('product') }}"><i class="nav-icon la la-th-list"></i> {{ ucfirst(__("products")) }}</a></li>--}}
 
 <li class="nav-item nav-dropdown">
   <a class="nav-link nav-dropdown-toggle" href="#">
@@ -28,6 +28,7 @@
         <span>{{ ucfirst(__("Drink Types")) }}</span>
       </a>
     </li>
+    <li class="nav-item"><a class="nav-link" href="{{ backpack_url('wine-type') }}"><i class="nav-icon la la-circle-o"></i> Wine types</a></li>
     <li class="nav-item">
       <a class="nav-link" href="{{ backpack_url('region') }}">
         <i class="nav-icon la la-circle-o"></i>
@@ -61,3 +62,4 @@
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('auction-package') }}"><i class="nav-icon la la-th-list"></i> Auction packages</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('auction') }}"><i class="nav-icon la la-th-list"></i> Auctions</a></li>
 
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('app-variable') }}"><i class="nav-icon la la-th-list"></i> App variables</a></li>
