@@ -42,4 +42,5 @@ Route::group([
 
     Route::crud('app-variable', 'AppVariableCrudController');
     Route::crud('wine-type', 'WineTypeCrudController');
+    Route::crud('static-pages', 'StaticPagesCrudController');
 });
